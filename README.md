@@ -98,7 +98,6 @@ git config --global user.email <github-email>
 ### Extension 설치
 
 - Auto Rename Tag
-- Bracket Pair Colorizer
 - ES7 React/Redux/GraphQL/React-Native snippets
 - indent-rainbow
 - Prettier - Code formatter

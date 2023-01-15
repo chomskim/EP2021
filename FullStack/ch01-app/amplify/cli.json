@@ -4,20 +4,10 @@
       "addmissingownerfields": true,
       "improvepluralization": false,
       "validatetypenamereservedwords": true,
-      "useexperimentalpipelinedtransformer": true,
+      "useexperimentalpipelinedtransformer": false,
       "enableiterativegsiupdates": true,
       "secondarykeyasgsi": true,
-      "skipoverridemutationinputtypes": true,
-      "transformerversion": 2,
-      "suppressschemamigrationprompt": true,
-      "securityenhancementnotification": false,
-      "showfieldauthnotification": false,
-      "usesubusernamefordefaultidentityclaim": true,
-      "usefieldnameforprimarykeyconnectionfield": false,
-      "enableautoindexquerynames": true,
-      "respectprimarykeyattributesonconnectionfield": true,
-      "shoulddeepmergedirectiveconfigdefaults": false,
-      "populateownerfieldforstaticgroupauth": true
+      "skipoverridemutationinputtypes": true
     },
     "frontend-ios": {
       "enablexcodeintegration": true
@@ -26,8 +16,7 @@
       "enablecaseinsensitivity": true,
       "useinclusiveterminology": true,
       "breakcirculardependency": true,
-      "forcealiasattributes": false,
-      "useenabledmfas": true
+      "forcealiasattributes": false
     },
     "codegen": {
       "useappsyncmodelgenplugin": true,
@@ -55,8 +44,5 @@
     "project": {
       "overrides": true
     }
-  },
-  "debug": {
-    "shareProjectConfig": false
   }
 }

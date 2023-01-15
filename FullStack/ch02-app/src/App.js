@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { API } from 'aws-amplify';
+import React, { useState, useEffect } from 'react'
+import { API } from 'aws-amplify'
 
-import './App.css';
+import './App.css'
 
 function App() {
   // Create coins variable and set to empty array
-  const [coins, updateCoins] = useState([]);
-  const [input, updateInput] = useState({ limit: 5, start: 0 });
+  const [coins, updateCoins] = useState([])
+  const [input, updateInput] = useState({ limit: 5, start: 0 })
   // Define function to all API
   // async function fetchCoins() {
   //   const data = await API.get('cryptoapi', '/coins');
@@ -14,21 +14,21 @@ function App() {
   // }
   // Create a new function to allow users to update the input values
   function updateInputValues(type, value) {
-    updateInput({ ...input, [type]: value });
+    updateInput({ ...input, [type]: value })
   }
   // Update fetchCoins function to use limit and start properties
   async function fetchCoins() {
-    const { limit, start } = input;
+    const { limit, start } = input
     const data = await API.get(
-      'cryptoapi',
+      'ch02cryptoapi',
       `/coins?limit=${limit}&start=${start}`
-    );
-    updateCoins(data.coins);
+    )
+    updateCoins(data.coins)
   }
   // Call fetchCoins function when component loads
   useEffect(() => {
-    fetchCoins();
-  }, []);
+    fetchCoins()
+  }, [])
 
   return (
     <div className='App'>
@@ -50,7 +50,7 @@ function App() {
         </div>
       ))}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Lambda Function resource stack creation using Amplify CLI",
+  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"10.6.1\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "cryptofunction",
+            "ch02cryptofun",
             {
               "Fn::Join": [
                 "",
                 [
-                  "cryptofunction",
+                  "ch02cryptofun",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "ch02appLambdaRole2dc01047",
+            "ch02appLambdaRolec842d56b",
             {
               "Fn::Join": [
                 "",
                 [
-                  "ch02appLambdaRole2dc01047",
+                  "ch02appLambdaRolec842d56b",
                   "-",
                   {
                     "Ref": "env"
@@ -188,6 +188,14 @@
     "LambdaExecutionRole": {
       "Value": {
         "Ref": "LambdaExecutionRole"
+      }
+    },
+    "LambdaExecutionRoleArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "LambdaExecutionRole",
+          "Arn"
+        ]
       }
     }
   }

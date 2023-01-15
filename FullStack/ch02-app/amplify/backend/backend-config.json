@@ -1,23 +1,41 @@
 {
+  "api": {
+    "ch02cryptoapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "ch02cryptofun"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "function": {
-    "cryptofunction": {
+    "ch02cryptofun": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
-  "api": {
-    "cryptoapi": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
+  "parameters": {
+    "AMPLIFY_function_ch02cryptofun_deploymentBucketName": {
+      "usedBy": [
         {
           "category": "function",
-          "resourceName": "cryptofunction",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
+          "resourceName": "ch02cryptofun"
+        }
+      ]
+    },
+    "AMPLIFY_function_ch02cryptofun_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ch02cryptofun"
         }
       ]
     }
