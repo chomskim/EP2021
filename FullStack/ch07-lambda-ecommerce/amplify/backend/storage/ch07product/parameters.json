@@ -1,5 +1,0 @@
-{
-    "tableName": "ch07product",
-    "partitionKeyName": "id",
-    "partitionKeyType": "S"
-}

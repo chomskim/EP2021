@@ -20,17 +20,17 @@ $ amplify add auth
  How do you want users to be able to sign in? <b>Username</b>
  Do you want to configure advanced settings? <b>Yes, I want to make some additional changes.</b>
  Warning: you will not be able to edit these selections. 
- What attributes are required for signing up? (Press <space> to select, <a> to toggle all, <i> to invert selection)
+ What attributes are required for signing up? (Press &lt;space> to select, &lt;a> to toggle all, &lt;i> to invert selection)
  Do you want to enable any of the following capabilities? Add User to Group
 ? Enter the name of the group to which users will be added. Admin
 Successfully added resource ch07lambdaecommerce2b4fc845PostConfirmation locally.
 
 Next steps:
-Check out sample function code generated in <project-dir>/amplify/backend/function/ch07lambdaecommerce2b4fc845PostConfirmation/src
+Check out sample function code generated in .../amplify/backend/function/ch07lambdaecommerce2b4fc845PostConfirmation/src
 Successfully added the Lambda function locally
 ? Do you want to edit your add-to-group function now? <b>Yes</b>
 ? Choose your default editor: <b>Visual Studio Code</b>
-Edit the file in your editor: /home/cskim/git-repo/EP2021/FullStack/ch07-lambda-ecommerce/amplify/backend/function/ch07lambdaecommerce2b4fc845PostConfirmation/src/add-to-group.js
+Edit the file in your editor: .../amplify/backend/function/ch07lambdaecommerce2b4fc845PostConfirmation/src/add-to-group.js
 ? Press enter to continue 
 Successfully added auth resource ch07lambdaecommerce2b4fc845 locally
 
@@ -40,8 +40,7 @@ $ amplify add storage
 Welcome to the NoSQL DynamoDB database wizard
 This wizard asks you a series of questions to help determine how to set up your NoSQL database table.
 
-? Please provide a friendly name for your resource that will be used to label this category in the project: <b>ch07pr
-oduct</b>
+? Please provide a friendly name for your resource that will be used to label this category in the project: <b>ch07product</b>
 ? Please provide table name: <b>ch07product</b>
 
 You can now add columns to the table.
@@ -60,14 +59,12 @@ You can now add columns to the table.
 
 $ amplify add api
 ? Please select from one of the below mentioned services: <b>REST</b>
-? Provide a friendly name for your resource to be used as a label for this category in the projec
-t: <b>ch07ecommerceapi</b>
+? Provide a friendly name for your resource to be used as a label for this category in the project: <b>ch07ecommerceapi</b>
 ? Provide a path (e.g., /book/{isbn}): <b>/products</b>
 ? Choose a Lambda source <b>Create a new Lambda function</b>
 ? Provide an AWS Lambda function name: <b>ch07ecommercefunction</b>
 ? Choose the runtime that you want to use: <b>NodeJS</b>
-? Choose the function template that you want to use: <b>Serverless ExpressJS function (Integration w
-ith API Gateway)</b>
+? Choose the function template that you want to use: <b>Serverless ExpressJS function (Integration with API Gateway)</b>
 
 Available advanced settings:
 - Resource access permissions
@@ -79,8 +76,7 @@ Available advanced settings:
 ? Do you want to configure advanced settings? <b>Yes</b>
 ? Do you want to access other resources in this project from your Lambda function? <b>Yes</b>
 ? Select the categories you want this function to have access to. <b>auth, storage</b>
-? Select the operations you want to permit on ch07lambdaecommerce2b4fc845 <b>create, read, update, d
-elete</b>
+? Select the operations you want to permit on ch07lambdaecommerce2b4fc845 <b>create, read, update, delete</b>
 ? Select the operations you want to permit on ch07product <b>create, read, update, delete</b>
 
 You can access the following resource attributes as environment variables from your Lambda function

@@ -92,6 +92,8 @@ exports.handler = async (event, context) => {
 </pre>
 
 <pre>
+amplify push
+
 yarn start
 
 yarn build
