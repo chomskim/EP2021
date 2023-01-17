@@ -13,22 +13,21 @@
       "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-ch06lamda1-dev-104532-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
-      "function": {
-        "ch06lamda1b5f95b20PostConfirmation": {
-          "GROUP": "Admin",
-          "deploymentBucketName": "amplify-ch06lamda1-dev-104532-deployment",
-          "s3Key": "amplify-builds/ch06lamda1b5f95b20PostConfirmation-6b647673773146667566-build.zip"
-        },
-        "S3Triggera56727f4": {
-          "deploymentBucketName": "amplify-ch06lamda1-dev-104532-deployment",
-          "s3Key": "amplify-builds/S3Triggera56727f4-776f2b44584734473159-build.zip"
-        }
-      },
       "auth": {
         "ch06lamda1b5f95b20": {}
       },
       "storage": {
         "ch06lamdas3": {}
+      },
+      "function": {
+        "ch06lamda1b5f95b20PostConfirmation": {
+          "deploymentBucketName": "amplify-ch06lamda1-dev-104532-deployment",
+          "s3Key": "amplify-builds/ch06lamda1b5f95b20PostConfirmation-4d394f4554717a544753-build.zip"
+        },
+        "S3Triggera56727f4": {
+          "deploymentBucketName": "amplify-ch06lamda1-dev-104532-deployment",
+          "s3Key": "amplify-builds/S3Triggera56727f4-5541366f753131623772-build.zip"
+        }
       }
     }
   }

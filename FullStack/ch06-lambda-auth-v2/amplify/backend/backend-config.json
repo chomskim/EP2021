@@ -65,14 +65,6 @@
         }
       ]
     },
-    "AMPLIFY_function_ch06lamda1b5f95b20PostConfirmation_GROUP": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "ch06lamda1b5f95b20PostConfirmation"
-        }
-      ]
-    },
     "AMPLIFY_function_ch06lamda1b5f95b20PostConfirmation_deploymentBucketName": {
       "usedBy": [
         {

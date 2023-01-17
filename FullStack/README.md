@@ -10,6 +10,9 @@
 $ sudo apt install -y python3-pip
 $ sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
 $ pip3 install awscli
+
+$ sudo apt  install awscli
+
 ```
 
 ## Installing and Configuring the Amplify CLI
