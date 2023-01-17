@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { Button } from 'antd';
-import { Auth } from 'aws-amplify';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
-import { useNavigate } from 'react-router-dom';
-import Container from './Container';
+import React, { useState, useEffect } from 'react'
+import { Button } from 'antd'
+import { Auth } from 'aws-amplify'
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+import { useNavigate } from 'react-router-dom'
+import Container from './Container'
 
 function Profile() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   useEffect(() => {
-    checkUser();
-  }, []);
-  const [user, setUser] = useState({});
+    checkUser()
+  }, [])
+  const [user, setUser] = useState({})
   async function checkUser() {
     try {
-      const data = await Auth.currentUserPoolUser();
-      const userInfo = { username: data.username, ...data.attributes };
-      setUser(userInfo);
+      const data = await Auth.currentUserPoolUser()
+      const userInfo = { username: data.username, ...data.attributes }
+      setUser(userInfo)
     } catch (err) {
-      console.log('error: ', err);
+      console.log('error: ', err)
     }
   }
   function signOut() {
     Auth.signOut()
       .then((res) => {
-        navigate('/');
+        navigate('/')
       })
-      .catch((err) => console.log('error signing out: ', err));
+      .catch((err) => console.log('error signing out: ', err))
   }
   return (
     <Container>
@@ -34,9 +34,9 @@ function Profile() {
       <h3>Email: {user.email}</h3>
       {/* <h4>Phone: {user.phone_number}</h4> */}
       <Button onClick={signOut}>Sign Out</Button>
-      <AmplifySignOut />
+      {/* <AmplifySignOut /> */}
     </Container>
-  );
+  )
 }
 
-export default withAuthenticator(Profile);
+export default withAuthenticator(Profile)

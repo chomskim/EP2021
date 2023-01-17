@@ -1,119 +1,119 @@
-import React, { useEffect, useReducer } from 'react';
-import { Input, List, Button } from 'antd';
-import 'antd/dist/antd.css';
-import { v4 as uuid } from 'uuid';
-import API, { graphqlOperation } from '@aws-amplify/api';
+import React, { useEffect, useReducer } from 'react'
+import { Input, List, Button } from 'antd'
+import 'antd/dist/antd.css'
+import { v4 as uuid } from 'uuid'
+import API, { graphqlOperation } from '@aws-amplify/api'
 
-import { listNotes } from './graphql/queries';
+import { listNotes } from './graphql/queries'
 import {
   updateNote as UpdateNote,
   createNote as CreateNote,
   deleteNote as DeleteNote,
-} from './graphql/mutations';
-import { onCreateNote } from './graphql/subscriptions';
+} from './graphql/mutations'
+import { onCreateNote } from './graphql/subscriptions'
 
 const initialState = {
   notes: [],
   loading: true,
   error: false,
   form: { name: '', description: '' },
-};
+}
 
-const CLIENT_ID = uuid();
+const CLIENT_ID = uuid()
 
 function reducer(state, action) {
   switch (action.type) {
     case 'SET_NOTES':
-      return { ...state, notes: action.notes, loading: false };
+      return { ...state, notes: action.notes, loading: false }
     case 'ADD_NOTE':
-      return { ...state, notes: [action.note, ...state.notes] };
+      return { ...state, notes: [action.note, ...state.notes] }
     case 'RESET_FORM':
-      return { ...state, form: initialState.form };
+      return { ...state, form: initialState.form }
     case 'SET_INPUT':
-      return { ...state, form: { ...state.form, [action.name]: action.value } };
+      return { ...state, form: { ...state.form, [action.name]: action.value } }
     case 'ERROR':
-      return { ...state, loading: false, error: true };
+      return { ...state, loading: false, error: true }
     default:
-      return state;
+      return state
   }
 }
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   useEffect(() => {
-    fetchNotes();
+    fetchNotes()
     const subscription = API.graphql(graphqlOperation(onCreateNote)).subscribe({
       next: (noteData) => {
-        const note = noteData.value.data.onCreateNote;
-        if (CLIENT_ID === note.clientId) return;
-        dispatch({ type: 'ADD_NOTE', note });
+        const note = noteData.value.data.onCreateNote
+        if (CLIENT_ID === note.clientId) return
+        dispatch({ type: 'ADD_NOTE', note })
       },
-    });
-    return () => subscription.unsubscribe();
-  }, []);
+    })
+    return () => subscription.unsubscribe()
+  }, [])
 
   async function fetchNotes() {
     try {
-      const notesData = await API.graphql(graphqlOperation(listNotes));
-      console.log('items=', notesData.data.listNotes.items);
-      dispatch({ type: 'SET_NOTES', notes: notesData.data.listNotes.items });
+      const notesData = await API.graphql(graphqlOperation(listNotes))
+      console.log('items=', notesData.data.listNotes.items)
+      dispatch({ type: 'SET_NOTES', notes: notesData.data.listNotes.items })
     } catch (err) {
-      console.log('error: ', err);
-      dispatch({ type: 'ERROR' });
+      console.log('error: ', err)
+      dispatch({ type: 'ERROR' })
     }
   }
 
   function onChange(e) {
-    console.log(`name=${e.target.name}, value=${e.target.value}`);
-    dispatch({ type: 'SET_INPUT', name: e.target.name, value: e.target.value });
+    console.log(`name=${e.target.name}, value=${e.target.value}`)
+    dispatch({ type: 'SET_INPUT', name: e.target.name, value: e.target.value })
   }
 
   async function createNote() {
-    const { form } = state;
+    const { form } = state
     if (!form.name || !form.description)
-      return alert('please enter a name and description');
-    const note = { ...form, clientId: CLIENT_ID, completed: false };
-    dispatch({ type: 'ADD_NOTE', note });
-    dispatch({ type: 'RESET_FORM' });
+      return alert('please enter a name and description')
+    const note = { ...form, clientId: CLIENT_ID, completed: false }
+    dispatch({ type: 'ADD_NOTE', note })
+    dispatch({ type: 'RESET_FORM' })
     try {
-      await API.graphql(graphqlOperation(CreateNote, { input: note }));
-      console.log('successfully created note!');
+      await API.graphql(graphqlOperation(CreateNote, { input: note }))
+      console.log('successfully created note!')
     } catch (err) {
-      console.log('error: ', err);
+      console.log('error: ', err)
     }
   }
 
   async function updateNote(note) {
-    const index = state.notes.findIndex((n) => n.id === note.id);
-    const notes = [...state.notes];
-    notes[index].completed = !note.completed;
-    console.log(`upd note=${JSON.stringify(notes[index])}`);
-    dispatch({ type: 'SET_NOTES', notes });
+    const index = state.notes.findIndex((n) => n.id === note.id)
+    const notes = [...state.notes]
+    notes[index].completed = !note.completed
+    console.log(`upd note=${JSON.stringify(notes[index])}`)
+    dispatch({ type: 'SET_NOTES', notes })
     try {
       await API.graphql(
         graphqlOperation(UpdateNote, {
           input: { id: note.id, completed: notes[index].completed },
         })
-      );
-      console.log('note successfully updated!');
+      )
+      console.log('note successfully updated!')
     } catch (err) {
-      console.log('error: ', err);
+      console.log('error: ', err)
     }
   }
 
   async function deleteNote({ id }) {
-    const index = state.notes.findIndex((n) => n.id === id);
+    const index = state.notes.findIndex((n) => n.id === id)
     const notes = [
       ...state.notes.slice(0, index),
       ...state.notes.slice(index + 1),
-    ];
-    dispatch({ type: 'SET_NOTES', notes });
+    ]
+    dispatch({ type: 'SET_NOTES', notes })
     try {
-      await API.graphql(graphqlOperation(DeleteNote, { input: { id } }));
-      console.log('successfully deleted note!');
+      await API.graphql(graphqlOperation(DeleteNote, { input: { id } }))
+      console.log('successfully deleted note!')
     } catch (err) {
-      console.log({ err });
+      console.log({ err })
     }
   }
 
@@ -132,7 +132,7 @@ function App() {
       >
         <List.Item.Meta title={item.name} description={item.description} />
       </List.Item>
-    );
+    )
   }
 
   return (
@@ -160,14 +160,14 @@ function App() {
         renderItem={renderItem}
       />
     </div>
-  );
+  )
 }
 
 const styles = {
   container: { padding: 20 },
   input: { marginBottom: 10 },
   item: { textAlign: 'left' },
-  p: { color: '#1890ff', background: 'blue' },
-};
+  p: { color: '#1890ff' },
+}
 
-export default App;
+export default App

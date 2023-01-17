@@ -6,11 +6,6 @@ import { BrowserRouter as Router } from 'react-router-dom'
 // import reportWebVitals from './reportWebVitals';
 
 import App from './App'
-import 'antd/dist/antd.css'
-
-import Amplify from 'aws-amplify'
-import config from './aws-exports'
-Amplify.configure(config)
 
 ReactDOM.render(
   <Router>

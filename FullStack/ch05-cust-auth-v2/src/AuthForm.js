@@ -10,7 +10,6 @@ import {
   useAuthenticator,
   Button,
   translations,
-  Card,
 } from '@aws-amplify/ui-react'
 import '@aws-amplify/ui-react/styles.css'
 import awsconfig from './aws-exports'
@@ -290,22 +289,11 @@ const components = {
   },
 }
 
-export default function App() {
+export default function AuthForm({ setUser }) {
   return (
     <Authenticator formFields={formFields} components={components}>
-      {(props) => {
-        console.log(props)
-        const { signOut, user } = props
-        return (
-          <main>
-            <Card variation='elevated'>
-              <h1>Hello {user.username}</h1>
-            </Card>
-            <Button variation='primary' onClick={signOut}>
-              Sign out
-            </Button>
-          </main>
-        )
+      {({ signOut, user }) => {
+        setUser(user)
       }}
     </Authenticator>
   )
