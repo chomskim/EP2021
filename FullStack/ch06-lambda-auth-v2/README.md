@@ -2,7 +2,7 @@
 
 ### Use Authenticator in @aws-amplify/ui-react
 
-<pre?>
+<pre>
 npx create-react-app ch06-lambda-auth-v2
 cd ch06-lambda-auth-v2
 yarn add aws-amplify @aws-amplify/ui-react antd react-router-dom
