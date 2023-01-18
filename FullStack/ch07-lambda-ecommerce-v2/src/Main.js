@@ -6,22 +6,21 @@ import checkUser from './checkUser'
 
 function Main() {
   const [state, setState] = useState({ products: [], loading: true })
-  const [user, updateUser] = useState({})
-  let didCancel = false
+  const [user, setUser] = useState({})
+
   useEffect(() => {
+    async function getProducts() {
+      const data = await API.get('ch07ecommerceapi', '/products')
+      console.log('data: ', data)
+      setState({
+        products: data.data.Items,
+        loading: false,
+      })
+    }
     getProducts()
-    checkUser(updateUser)
-    return () => (didCancel = true)
+    checkUser(setUser)
   }, [])
-  async function getProducts() {
-    const data = await API.get('ch07ecommerceapi', '/products')
-    console.log('data: ', data)
-    if (didCancel) return
-    setState({
-      products: data.data.Items,
-      loading: false,
-    })
-  }
+
   async function deleteItem(id) {
     try {
       const products = state.products.filter((p) => p.id !== id)

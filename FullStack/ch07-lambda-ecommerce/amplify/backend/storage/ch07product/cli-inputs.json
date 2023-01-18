@@ -1,0 +1,10 @@
+{
+  "resourceName": "ch07product",
+  "tableName": "ch07product",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

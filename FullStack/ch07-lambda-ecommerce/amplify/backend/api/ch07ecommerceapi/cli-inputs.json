@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "paths": {
+    "/products": {
+      "name": "/products",
+      "lambdaFunction": "ch07ecommercefunction",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ],
+        "guest": [
+          "read"
+        ]
+      }
+    }
+  }
+}

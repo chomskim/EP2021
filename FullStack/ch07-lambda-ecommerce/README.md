@@ -20,7 +20,7 @@ $ amplify add auth
  How do you want users to be able to sign in? <b>Username</b>
  Do you want to configure advanced settings? <b>Yes, I want to make some additional changes.</b>
  Warning: you will not be able to edit these selections. 
- What attributes are required for signing up? (Press &lt;space> to select, &lt;a> to toggle all, &lt;i> to invert selection)
+ What attributes are required for signing up? Email
  Do you want to enable any of the following capabilities? Add User to Group
 ? Enter the name of the group to which users will be added. Admin
 Successfully added resource ch07lambdaecommerce2b4fc845PostConfirmation locally.

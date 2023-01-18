@@ -7,15 +7,15 @@ import checkUser from './checkUser'
 
 const Nav = (props) => {
   const { current } = props
-  const [user, updateUser] = useState({})
+  const [user, setUser] = useState({})
   useEffect(() => {
-    checkUser(updateUser)
+    checkUser(setUser)
     Hub.listen('auth', (data) => {
       const {
         payload: { event },
       } = data
       console.log('event: ', event)
-      if (event === 'signIn' || event === 'signOut') checkUser(updateUser)
+      if (event === 'signIn' || event === 'signOut') checkUser(setUser)
     })
   }, [])
 

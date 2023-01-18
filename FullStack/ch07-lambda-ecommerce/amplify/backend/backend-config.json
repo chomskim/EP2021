@@ -1,0 +1,132 @@
+{
+  "api": {
+    "ch07ecommerceapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "ch07ecommercefunction"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "ch07lambdaecommerce048a0bbf": {
+      "customAuth": false,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn",
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "ch07lambdaecommerce048a0bbfPostConfirmation",
+          "triggerProvider": "Cognito"
+        }
+      ],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "ch07ecommercefunction": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "ch07lambdaecommerce048a0bbf"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "ch07product"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "ch07lambdaecommerce048a0bbfPostConfirmation": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_ch07ecommercefunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ch07ecommercefunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_ch07ecommercefunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ch07ecommercefunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_ch07lambdaecommerce048a0bbfPostConfirmation_GROUP": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ch07lambdaecommerce048a0bbfPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_ch07lambdaecommerce048a0bbfPostConfirmation_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ch07lambdaecommerce048a0bbfPostConfirmation"
+        }
+      ]
+    },
+    "AMPLIFY_function_ch07lambdaecommerce048a0bbfPostConfirmation_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "ch07lambdaecommerce048a0bbfPostConfirmation"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "ch07product": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}

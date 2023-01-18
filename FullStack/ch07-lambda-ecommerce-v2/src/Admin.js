@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import './App.css'
 import { Input, Button } from 'antd'
-
 import { API } from 'aws-amplify'
-import { withAuthenticator } from '@aws-amplify/ui-react'
+
+import protectedRoute from './protectedRoute'
+import Container from './Container'
 
 const initialState = {
   name: '',
@@ -32,7 +33,7 @@ function Admin() {
     }
   }
   return (
-    <div style={containerStyle}>
+    <Container>
       <Input
         name='name'
         onChange={updateForm}
@@ -50,13 +51,8 @@ function Admin() {
       <Button style={buttonStyle} onClick={addItem}>
         Add Product
       </Button>
-    </div>
+    </Container>
   )
-}
-
-const containerStyle = {
-  width: 400,
-  margin: '20px auto',
 }
 
 const inputStyle = {
@@ -67,4 +63,4 @@ const buttonStyle = {
   marginTop: 10,
 }
 
-export default withAuthenticator(Admin)
+export default protectedRoute(Admin)
