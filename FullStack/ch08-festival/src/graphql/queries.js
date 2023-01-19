@@ -6,6 +6,8 @@ export const getStage = /* GraphQL */ `
     getStage(id: $id) {
       id
       name
+      createdAt
+      updatedAt
       performances {
         items {
           id
@@ -20,11 +22,9 @@ export const getStage = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
-`;
+`
 export const listStages = /* GraphQL */ `
   query ListStages(
     $filter: ModelStageFilterInput
@@ -35,16 +35,22 @@ export const listStages = /* GraphQL */ `
       items {
         id
         name
-        performances {
-          nextToken
-        }
         createdAt
         updatedAt
+        performances {
+          items {
+            description
+            id
+            performanceStageId
+            performer
+          }
+          nextToken
+        }
       }
       nextToken
     }
   }
-`;
+`
 export const getPerformance = /* GraphQL */ `
   query GetPerformance($id: ID!) {
     getPerformance(id: $id) {
@@ -55,20 +61,20 @@ export const getPerformance = /* GraphQL */ `
       imageUrl
       description
       time
+      createdAt
+      updatedAt
       stage {
         id
         name
+        createdAt
+        updatedAt
         performances {
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
-`;
+`
 export const listPerformances = /* GraphQL */ `
   query ListPerformances(
     $filter: ModelPerformanceFilterInput
@@ -84,16 +90,16 @@ export const listPerformances = /* GraphQL */ `
         imageUrl
         description
         time
+        createdAt
+        updatedAt
         stage {
           id
           name
           createdAt
           updatedAt
         }
-        createdAt
-        updatedAt
       }
       nextToken
     }
   }
-`;
+`

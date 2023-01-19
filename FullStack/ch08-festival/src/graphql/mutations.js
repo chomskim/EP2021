@@ -9,6 +9,8 @@ export const createStage = /* GraphQL */ `
     createStage(input: $input, condition: $condition) {
       id
       name
+      createdAt
+      updatedAt
       performances {
         items {
           id
@@ -23,8 +25,6 @@ export const createStage = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -36,6 +36,8 @@ export const updateStage = /* GraphQL */ `
     updateStage(input: $input, condition: $condition) {
       id
       name
+      createdAt
+      updatedAt
       performances {
         items {
           id
@@ -50,8 +52,6 @@ export const updateStage = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -63,6 +63,8 @@ export const deleteStage = /* GraphQL */ `
     deleteStage(input: $input, condition: $condition) {
       id
       name
+      createdAt
+      updatedAt
       performances {
         items {
           id
@@ -77,8 +79,6 @@ export const deleteStage = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -95,17 +95,17 @@ export const createPerformance = /* GraphQL */ `
       imageUrl
       description
       time
+      createdAt
+      updatedAt
       stage {
         id
         name
+        createdAt
+        updatedAt
         performances {
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -122,17 +122,17 @@ export const updatePerformance = /* GraphQL */ `
       imageUrl
       description
       time
+      createdAt
+      updatedAt
       stage {
         id
         name
+        createdAt
+        updatedAt
         performances {
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -149,17 +149,17 @@ export const deletePerformance = /* GraphQL */ `
       imageUrl
       description
       time
+      createdAt
+      updatedAt
       stage {
         id
         name
+        createdAt
+        updatedAt
         performances {
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;

@@ -1,30 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { getPerformance } from "./graphql/queries";
-import { API } from "aws-amplify";
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { getPerformance } from './graphql/queries'
+import { API } from 'aws-amplify'
 
 function Performance() {
-  const [performance, setPerformance] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [performance, setPerformance] = useState(null)
+  const [loading, setLoading] = useState(true)
 
-  let { id } = useParams();
+  let { id } = useParams()
   useEffect(() => {
-    fetchPerformanceInfo();
-  }, []);
-  async function fetchPerformanceInfo() {
-    try {
-      const talkInfo = await API.graphql({
-        query: getPerformance,
-        variables: { id },
-        authMode: "API_KEY",
-      });
-      setPerformance(talkInfo.data.getPerformance);
-      setLoading(false);
-    } catch (err) {
-      console.log("error fetching talk info...", err);
-      setLoading(false);
+    async function fetchPerformanceInfo() {
+      try {
+        const talkInfo = await API.graphql({
+          query: getPerformance,
+          variables: { id },
+          authMode: 'API_KEY',
+        })
+        console.log('performance: ', talkInfo.data.getPerformance)
+        setPerformance(talkInfo.data.getPerformance)
+        setLoading(false)
+      } catch (err) {
+        console.log('error fetching talk info...', err)
+        setLoading(false)
+      }
     }
-  }
+
+    fetchPerformanceInfo()
+  }, [id])
 
   return (
     <div>
@@ -38,7 +40,7 @@ function Performance() {
         </div>
       )}
     </div>
-  );
+  )
 }
 
-export default Performance;
+export default Performance

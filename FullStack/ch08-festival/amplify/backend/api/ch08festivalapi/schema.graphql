@@ -1,4 +1,11 @@
-type Stage @model {
+type Stage
+  @model
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      { allow: groups, groups: ["Admin"] }
+    ]
+  ) {
   id: ID!
   name: String!
   performances: [Performance] @connection(keyName: "byStageId", fields: ["id"])
@@ -6,7 +13,13 @@ type Stage @model {
 
 type Performance
   @model
-  @key(name: "byStageId", fields: ["performanceStageId"]) {
+  @key(name: "byStageId", fields: ["performanceStageId"])
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      { allow: groups, groups: ["Admin"] }
+    ]
+  ) {
   id: ID!
   performanceStageId: ID!
   productID: ID

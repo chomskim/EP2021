@@ -1,6 +1,6 @@
 # Ch06 Lambda Auth Build V2
 
-### Use Authenticator in @aws-amplify/ui-react
+## Use Custom Authetication
 
 <pre>
 npx create-react-app ch06-lambda-auth-v2

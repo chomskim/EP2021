@@ -9,18 +9,22 @@
       "UnauthRoleName": "amplify-ch08festival-dev-95617-unauthRole",
       "StackName": "amplify-ch08festival-dev-95617",
       "StackId": "arn:aws:cloudformation:ap-northeast-2:662053100371:stack/amplify-ch08festival-dev-95617/a8ea3a30-57c1-11ec-b716-065616440ec0",
-      "AmplifyAppId": "dyn8wogcl1q3o"
+      "AmplifyAppId": "dyn8wogcl1q3o",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-ch08festival-dev-95617-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "function": {
         "ch08festival2c9eab4fPostConfirmation": {
           "GROUP": "Admin",
           "deploymentBucketName": "amplify-ch08festival-dev-95617-deployment",
-          "s3Key": "amplify-builds/ch08festival2c9eab4fPostConfirmation-616d6139377978615373-build.zip"
+          "s3Key": "amplify-builds/ch08festival2c9eab4fPostConfirmation-6b714d336536694a636c-build.zip"
         }
       },
       "auth": {
         "ch08festival2c9eab4f": {}
+      },
+      "api": {
+        "ch08festivalapi": {}
       }
     }
   }

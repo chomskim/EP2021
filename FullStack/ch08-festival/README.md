@@ -110,8 +110,6 @@ Add new Component
 - Performance.js
 - Home.js
 
-Delete App.js  
-Rename Router to App  
 Edit App.js using new react-router-dom
 
 ```
@@ -121,3 +119,48 @@ $ yarn add @aws-amplify/ui-react@1.2.25
 $ yarn start
 
 ```
+
+## On AWS AppSync Console --> APIs(Ch08...) --> Queries
+
+<pre>
+mutation MyMutation {
+  createStage(input: {
+    id: "stage-1"
+    name: "Stage 1"
+  }) {
+    id name
+  }
+}
+
+mutation MyMutation {
+  createPerformance(input: {
+    performanceStageId: "stage-1"
+    performer: "Dreek"
+    description: "Dreek LIVE in NYC! Don't miss out, performing all of the hits with a few surprise performances!"
+    time: "Monday, May 4 2022"
+  }) {
+    id performer description
+  }
+}
+
+mutation MyMutation {
+  createPerformance(input: {
+    performanceStageId: "stage-1"
+    performer: "BTS"
+    description: "BTS LIVE in NYC! Don't miss out, performing all of the hits with a few surprise performances!"
+    time: "Monday, Jan 23 2023"
+  }) {
+    id performer description
+  }
+}
+===
+{
+  "data": {
+    "createPerformance": {
+      "id": "d20e9874-61df-4f48-b274-dc1068a8d662",
+      "performer": "BTS",
+      "description": "BTS LIVE in NYC! Don't miss out, performing all of the hits with a few surprise performances!"
+    }
+  }
+}
+</pre>

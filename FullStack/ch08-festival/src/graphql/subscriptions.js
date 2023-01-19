@@ -6,6 +6,8 @@ export const onCreateStage = /* GraphQL */ `
     onCreateStage {
       id
       name
+      createdAt
+      updatedAt
       performances {
         items {
           id
@@ -20,8 +22,6 @@ export const onCreateStage = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -30,6 +30,8 @@ export const onUpdateStage = /* GraphQL */ `
     onUpdateStage {
       id
       name
+      createdAt
+      updatedAt
       performances {
         items {
           id
@@ -44,8 +46,6 @@ export const onUpdateStage = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -54,6 +54,8 @@ export const onDeleteStage = /* GraphQL */ `
     onDeleteStage {
       id
       name
+      createdAt
+      updatedAt
       performances {
         items {
           id
@@ -68,8 +70,6 @@ export const onDeleteStage = /* GraphQL */ `
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -83,17 +83,17 @@ export const onCreatePerformance = /* GraphQL */ `
       imageUrl
       description
       time
+      createdAt
+      updatedAt
       stage {
         id
         name
+        createdAt
+        updatedAt
         performances {
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -107,17 +107,17 @@ export const onUpdatePerformance = /* GraphQL */ `
       imageUrl
       description
       time
+      createdAt
+      updatedAt
       stage {
         id
         name
+        createdAt
+        updatedAt
         performances {
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -131,17 +131,17 @@ export const onDeletePerformance = /* GraphQL */ `
       imageUrl
       description
       time
+      createdAt
+      updatedAt
       stage {
         id
         name
+        createdAt
+        updatedAt
         performances {
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
