@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "ch10photoapp784d3804": {}
+      },
+      "storage": {
+        "ch10photos": {}
       }
     }
   }

@@ -141,4 +141,5 @@ const titleStyle = {
   fontWeight: 'normal',
   margin: '0px 0px 10px 0px',
 }
+
 export default withAuthenticator(Admin)

@@ -41,3 +41,9 @@ Successfully added resource ch09message locally
 $ amplify push --y
 
 ```
+
+## Get API Key
+
+- AWS AppSync --> Ch09message-dev --> Settings
+- Default authorization mode --> API key
+- Configuration --> API keys --> [New] da2-d2mkvz2s3..............

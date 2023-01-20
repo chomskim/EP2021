@@ -25,6 +25,7 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='performance/:id' element={<Performance />} />
           <Route path='admin' element={<Admin />} />
+          <Route path='profile' element={<Profile />} />
           <Route path='*' element={<Home />} />
         </Routes>
       </Container>
