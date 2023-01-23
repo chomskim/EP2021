@@ -1,13 +1,13 @@
 # Ch03 Build
 
 <pre>
-$ npx create-react-app ch03-noteapp
+$ npx create-react-app ch03-noteapp-v2
 $ cd ch03-noteapp
 $ yarn add aws-amplify antd uuid
 
 $ amplify init
 Note: It is recommended to run this command from the root of your app directory
-? Enter a name for the project <b>ch03noteapp</b>
+? Enter a name for the project <b>ch03noteappv2</b>
 The following configuration will be applied:
 
 Project information
@@ -41,7 +41,7 @@ Your project has been successfully initialized and connected to the cloud!
 
 $ amplify add api
 ? Please select from one of the below mentioned services: <b>GraphQL</b>
-? Provide API name: <b>notesapi</b>
+? Provide API name: <b>ch03noteappv2</b>
 ? Choose the default authorization type for the API <b>API key</b>
 ? Enter a description for the API key: <b>public</b>
 ? After how many days from now the API key should expire (1-365): <b>365</b>
@@ -62,13 +62,15 @@ or place .graphql files in a directory at /home/cskim/git-repo/EP2021/FullStack/
 ? Do you want to edit the schema now? <b>Yes</b>
 ? Choose your default editor: <b>Visual Studio Code</b>
 Edit the file in your editor: <b>/home/cskim/git-repo/EP2021/FullStack/ch03-noteapp/amplify/backend/api/notesapi/schema.graphql
-type Note @model {
+
+type Note @model @auth(rules: [{ allow: public }]) {
   id: ID!
   clientId: ID
   name: String!
   description: String
   completed: Boolean
 }
+
 </b>
 Successfully added resource notesapi locally
 ...
@@ -135,34 +137,4 @@ query listNotes {
   }
 }
 
-</pre>
-
-<pre>
-$ amplify console api
-? Please select from one of the below mentioned services: GraphQL
-Error opening console.
-Missing AmplifyAppId in amplify-meta.json
-
-Amplify App  갯수가 25가 넘어서 생기는 에러
-</pre>
-
-AWS Console Login  
-Service Quotas > AWS services > AWS Amplify  
-에서 Quota를 25에서 50으로 늘림 (It takes several days)
-
-On Case of Error
-
-<pre>
-$ amplify delete
-? Are you sure you want to continue? This CANNOT be undone. (This will delete all the environments of the proje
-ct from the cloud and wipe out all the local files created by Amplify CLI) Yes
-⠋ Deleting resources from the cloud. This may take a few minutes...
-Deleting env: dev.
-✔ Project deleted in the cloud.
-Project deleted locally.
-
-앞의 Step 반복
-$ amplify init
-$ amplify add api
-$ amplify push
 </pre>
